@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab4Ex2-GPA Calculator</title>
+</head>
+<body>
+    <script>
+        // we declare a student object here, with two attributes:
+        // "name" (a string) and "results" (an array of objects)
+        var student = {
+            "name": "Jason",
+            "results": [ // results is an array of objects with 3 properties - modulecode, grade and credit
+                {
+                    "moduleCode": "EG1234",
+                    "grade": "A",
+                    "credit": 4
+                },
+                {
+                    "moduleCode": "EG1298",
+                    "grade": "B+",
+                    "credit": 4
+                },
+                {
+                    "moduleCode": "EG2255",
+                    "grade": "C",
+                    "credit": 2
+                },
+            ]
+        };
+
+        var gradeToPoint = { // gradeToPoint is an object with 8 properties, used as a "look-up" object e.g. gradeToPoint["A"] returns 4.0
+            "A": 4.0,
+            "B+": 3.5,
+            "B": 3.0,
+            "C+": 2.5,
+            "C": 2.0,
+            "D+": 1.5,
+            "D": 1.0,
+            "F": 0.0
+        };
+
+        function calculateGPA() { // start of calculateGPA function
+            var totalCredit = 0;
+            var totalGradepoint = 0;
+
+            student.results.forEach(function(result) { // passed in one object at a time
+
+                console.log(result); // show the passed-in object in results array 
+
+                var grade = result.grade;
+                var credit = result.credit;
+                
+                totalCredit = totalCredit + credit;
+
+                var point  = gradeToPoint[grade]; // gets the value based on key e.g. grade "A" returns 4.0 and stores into point
+
+                console.log("Grade "+grade+" is "+point+" points");
+
+                totalGradepoint = totalGradepoint + point*credit;
+            })
+            
+            var gpa = totalGradepoint/totalCredit;  // calculate GPA here
+      
+            console.log("GPA for "+student.name+" is "+ gpa);
+            
+/*
+            // ADDITIONAL information on looping through array items - more ways to loop!
+
+            console.log("--------------------------");
+            console.log("More ways to process array");
+            console.log("--------------------------");
+
+            //another way of looping through array
+            for(var i in student.results) {
+                var result = student.results[i];
+                console.log(result); 
+            }
+
+            console.log("--------------------------");
+
+            //the usual way of looping through array
+            for(var i=0; i<student.results.length;i++) {
+                var result = student.results[i];
+                console.log(result); 
+            }
+
+            console.log("--------------------------");
+
+            // yet another way to iterate through array!
+            for (var result of student.results) {
+                console.log(result);                 
+            }*/
+
+        } // end of calculateGPA function
+
+        // calculateGPA(); // if we want to directly call the function to get overall GPA (in this case, we use button click to call calculateGPA instead)
+
+    </script>
+
+    <h1>GPA Calculator</h1>
+
+    <input type=button value="Calculate!" onclick="calculateGPA();"
+
+</body>
+</html>

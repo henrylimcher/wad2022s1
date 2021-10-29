@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab4Ex1-Math Operations</title>
+</head>
+<body>
+    <script>
+        function add(a,b) {
+            return a+b;
+        }
+        //or another equivalent way of syntax:
+        // var add = function(a,b){
+        //    return a+b;
+        // };
+
+        function subtract(a,b) {
+            return a-b;
+        }
+
+        function multiply(a,b) {
+            return a*b;
+        }
+
+        function divide(a,b) {
+            return a/b;
+        }
+
+        function specialOperation(x,y,functionToCall) {
+            // operation parameter is the name of the function to call
+            // refer to greeter example in Lab 1 Task 4 (functions as values)
+
+            console.log("You have passed in a function named: "+functionToCall.name); //shows which function name is passed in!
+            console.log(functionToCall); // returns the passed-in function itself
+
+            console.log(functionToCall(x,y)); // call the actual function
+        }
+
+        specialOperation(35,20,add);
+        specialOperation(80,40,divide);
+        specialOperation(25,13,multiply);
+
+    </script>
+    
+</body>
+</html>
