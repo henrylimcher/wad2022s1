@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head><title>Sports DOM</title></head>
+<body>
+    <header>
+        <h1 class="title">Triathlon</h1>
+    </header>
+    <section id="sports">
+        <p class="swim">Swim</p>
+        <p id="bike">Bike</p>
+        <p>Run</p>
+     </section>
+<button class="addSportsBtn">Add new sport</button>
+<script src="jquery.min.js"></script>
+    <script>
+     $(function(){   // preferred way for jquery version 3.0 or later
+     // older ways are $(document).ready(function({...}) or $().ready(function({...})
+    
+     // enter codes for 9 challenges here!
+
+        // challenge #1
+        console.log($("p")); // returns all paragraphs in the document/DOM
+		
+
+
+
+        //challenge #2
+        console.log($("#sports").children());
+        //or
+        console.log($("#sports>"));
+
+
+
+        // challenge #3
+
+        console.log($(".swim").attr("class")); // not so good because we play cheat with ".swim"
+        var p1=$("p")[0];
+        console.log($(p1).attr("class"));
+
+
+        // challenge #4
+
+        console.log($("#bike").attr("id","para2")); // not so good cos we target the known id
+
+        var p2=$("p")[1];
+        $(p2).attr("id","para2");
+
+
+        // challenge #5
+
+        var p3=$("p")[2];
+        $(p3).addClass("running");
+        // or
+        $("p:nth-child(3)").addClass("running");
+
+
+        // challenge #6
+
+        $(p1).text("Swimming");
+
+
+        // challenge #7
+
+        var text = $(p3).text();
+        console.log(text);
+
+
+        // challenge #8
+
+        $(".title").css("color","red");
+        //$(".title").css({'color':'blue', 'font-family':'arial'});
+        //$(".title").attr("style", "color:blue; font-family:arial;");
+
+
+        // challenge #9
+
+/*      $(".addSportsBtn").click(
+        function(){
+            $("section").append('<p>Badminton</p>');
+            $(".addSportsBtn").hide();
+        }); */
+        //or
+        $(".addSportsBtn").click(
+        function(){
+          $("#sports").append('<p>Badminton</p>');
+          $(this).hide();
+        });
+
+        }); 
+       
+
+    </script>
+</body>
+</html>
