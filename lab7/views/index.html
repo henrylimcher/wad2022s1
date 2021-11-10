@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <title>Event Management Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Event Management Page</h1>
+    <section class="events">
+
+    </section>
+    <section>
+        <button class="addEvent">Add new event</button>
+    </section>
+    <section class="addNewEvent">
+        <form action="/events" method="POST">
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="description">Event Description:</label>
+            <input type="text" id="description" name="description"><br>
+            <label for="startDate">Start Date:</label>
+            <input type="text" id="startDate" name="startDate">
+            <label for="startTime">Start Time:</label>
+            <input type="text" id="startTime" name="startTime"><br>
+            <label for="endDate">End Date:</label>
+            <input type="text" id="endDate" name="endDate">
+            <label for="startTime">End Time:</label>
+            <input type="text" id="endTime" name="endTime"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    <script src='/js/jquery.min.js'></script>
+    <script>
+        $(function() {
+            $.ajax({
+                url: "/events",
+                method: "get"
+            })
+                .done(
+                    function (data) {
+                        data.forEach(function(event) {
+                            /**
+                               Choose ONLY ONE of the following versions. 
+                               For the subsequent lab solutions, I will use Version 1 in my solutions.
+                            **/
+                           
+
+                            // Version 1 - use of backticks
+                            $(".events").append(`
+                                <article>
+                                    <h2>${event.name}</h2>
+                                    <div>
+                                        ${event.description}<br>
+                                        Start: ${event.start.date} ${event.start.time}<br>
+                                        End: ${event.end.date} ${event.end.time}<br>
+                                    </div>
+                                </article>
+                            `);                            
+
+
+                            //Version 2 - Traditional Way
+                            // var article = $("<article>");
+                            // article.append("<h2>" + event.name + "</h2>");
+                            // var divElement = $("<div>");
+                            // divElement.append(event.description+"<br>");
+                            // divElement.append("Start: " + event.start.date + " " + event.start.time + "<br>");
+                            // divElement.append("End: " + event.end.date + " " + event.end.time);
+                            // article.append(divElement);
+                            // $(".events").append(article);
+
+                            // Version 3 - slightly easier codes than above
+                            // $(".events").append("<article>" +
+                            //     "<h2>" + event.name + "</h2>"+
+                            //     "<div>" +
+                            //     event.description+"<br>" +
+                            //     "Start: " + event.start.date + " " + event.start.time + "<br>" +
+                            //     "End: " + event.end.date + " " + event.end.time +
+                            //     "</div>" +
+                            // "</article>");
+
+
+                        });
+                    }
+                )
+                .fail(
+                    function (err) {
+                        console.log(err.responseText);
+                    }
+                )
+
+            $(".addEvent").click(function () {
+                $(".addNewEvent").show();
+            })
+        })
+    </script>
+</body>
+
+</html>
