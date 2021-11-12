@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>Organizer Management Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section class="currentOrganizers">
+    </section>
+    <h1>Register Organizer</h1>
+    <section>
+        <form action="/organizers" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company"><br>
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br>
+            <input type="submit" value="Register">
+        </form>
+    </section>
+    <section class="organizersSection">
+        <h1>List of organizers</h1>
+        <ul class="organizerList">
+        </ul>
+    </section>
+    <script src='/js/jquery.min.js'></script>
+    <script src="/js/organizer.js"></script>
+</body>
+
+</html>
