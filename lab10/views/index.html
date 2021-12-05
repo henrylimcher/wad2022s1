@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Event Management Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Event Management Page</h1>
+    <section class="events">
+
+    </section>
+    <section>
+        <button class="addEvent">Add new event</button>
+    </section>
+    <br>
+    <section class="addNewEvent">
+        <form action="/events" method="POST">
+            <label for="name">Event Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="description">Event Description:</label>
+            <input type="text" id="description" name="description"><br>
+            <label for="startDate">Start Date:</label>
+            <input type="text" id="startDate" name="startDate">
+            <label for="startTime">Start Time:</label>
+            <input type="text" id="startTime" name="startTime"><br>
+            <label for="endDate">End Date:</label>
+            <input type="text" id="endDate" name="endDate">
+            <label for="startTime">End Time:</label>
+            <input type="text" id="endTime" name="endTime"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    <script src='/js/jquery.min.js'></script>
+    <script src='/js/index.js'></script>
+</body>
+
+</html>
